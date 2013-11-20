@@ -1,0 +1,80 @@
+<config>
+
+<virtualAddressNBits>32</virtualAddressNBits>
+<numberProcessesNBits>2</numberProcessesNBits>
+<diskATU>10</diskATU>
+
+<pageTable direct="true">
+	<offsetLengths>
+		<length>10</length>
+		<length>10</length>
+	</offsetLengths>
+	<searchMethod>topdown</searchMethod>
+	<tlbConfig>
+		<numberEntriesNBits>3</numberEntriesNBits>
+		<evictionPolicy>RANDOM</evictionPolicy>
+		<dataInstrSeparated>true</dataInstrSeparated>
+		<accessTimeUnits>1</accessTimeUnits>
+	</tlbConfig>	
+</pageTable>
+
+<pageAgingConfig>
+	<pageAgingIncrease>2</pageAgingIncrease>
+	<memRefToRun>5</memRefToRun>
+</pageAgingConfig>
+
+<memAllocConfig>
+	<minPFF>3</minPFF>
+	<maxPFF>6</maxPFF>
+	<evNodesToRun>5</evNodesToRun>
+</memAllocConfig>		
+
+<mainMemoryConfig>
+	<numberEntriesNBits>7</numberEntriesNBits>
+	<blockSizeNBits>12</blockSizeNBits>
+	<evictionPolicy>RANDOM</evictionPolicy>
+	<busSize>20</busSize>
+	<accessTimeUnits>4</accessTimeUnits>
+	<numberSetsNBits>0</numberSetsNBits>
+	<dataInstrSeparated>false</dataInstrSeparated>
+</mainMemoryConfig>
+
+<cacheConfig>
+	<numberEntriesNBits>4</numberEntriesNBits>
+	<blockSizeNBits>4</blockSizeNBits>
+	<blockSizeInstrNBits>4</blockSizeInstrNBits>
+	<evictionPolicy>RANDOM</evictionPolicy>
+	<busSize>8</busSize>
+	<numberSetsNBits>2</numberSetsNBits>
+	<accessTimeUnits>1</accessTimeUnits>
+	<dataInstrSeparated>true</dataInstrSeparated>
+	<hitWritePolicy>writeThrough</hitWritePolicy>
+	<missWritePolicy>writeAllocate</missWritePolicy>
+</cacheConfig>
+
+<cacheConfig>
+	<numberEntriesNBits>5</numberEntriesNBits>
+	<blockSizeNBits>4</blockSizeNBits>
+	<evictionPolicy>RANDOM</evictionPolicy>
+	<accessTimeUnits>2</accessTimeUnits>
+	<busSize>10</busSize>
+	<numberSetsNBits>0</numberSetsNBits>
+	<dataInstrSeparated>false</dataInstrSeparated>
+	<hitWritePolicy>writeThrough</hitWritePolicy>
+	<missWritePolicy>writeAllocate</missWritePolicy>
+</cacheConfig>
+
+<cacheConfig>
+	<numberEntriesNBits>6</numberEntriesNBits>
+	<blockSizeNBits>4</blockSizeNBits>
+	<evictionPolicy>RANDOM</evictionPolicy>
+	<busSize>16</busSize>
+	<accessTimeUnits>3</accessTimeUnits>
+	<numberSetsNBits>1</numberSetsNBits>
+	<dataInstrSeparated>false</dataInstrSeparated>
+	<hitWritePolicy>writeBack</hitWritePolicy>
+	<missWritePolicy>writeAllocate</missWritePolicy>
+</cacheConfig>
+
+
+</config>	
