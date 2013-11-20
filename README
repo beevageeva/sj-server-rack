@@ -1,1 +1,50 @@
-serve files
+serve files for sj and sj_ext
+
+Example of configuration for apache:
+
+
+<VirtualHost *:80>
+  ServerName sienai.ull.es
+
+
+  DocumentRoot /local/ruby/sj-server-rack/public/
+
+    <Directory /local/ruby/sj-server-rack/public/>
+        Options Indexes ExecCGI FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+
+
+
+  RackBaseURI /
+
+
+    ErrorLog /var/log/apache2/sienai-error_log
+
+    LogLevel alert rewrite:warn
+
+    CustomLog /var/log/apache2/sienai-access_log common
+
+  LogLevel  debug
+
+#PARA usar con webrick? (default of ramaze)
+# RewriteLogLevel 9
+#
+#    ProxyRequests Off
+#     # Let apache correctly rewrite redirect
+#        RewriteEngine On
+#        RewriteRule ^$ index.html [QSA]
+#        # For static files it's good to avoid hitting your mongrel process
+#        # so let apache knows it should serve it directly
+#        # for a rails application it means, files in images / stylesheets / javascripts
+#       #trace and log files must be serverd by apache
+#        RewriteRule "^/(sj|sj_ext)/(files|dist)/?(.*)" "$0" [QSA,L] 
+#        # Try to match a cached pages
+#        #RewriteRule ^([^.]+)$ $1.html [QSA]
+#        # if the cached page does not exists
+#        RewriteCond %{REQUEST_FILENAME} !-f
+#        # proxy requests to your mongrel instance
+#        RewriteRule "^/(sj|sj_ext)/(.*)" "http://localhost:7000/$1/$2" [P,QSA,L]
+</VirtualHost>
+
